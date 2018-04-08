@@ -138,13 +138,13 @@ int main() {
 
           cout << "calling Solve" << endl;
           // solve the optimization problem
-          //auto optResult = mpc.Solve(state, coeffs); 
+          auto optResult = mpc.Solve(state, coeffs); 
 
           cout << "solve returned" << endl;
           json msgJson;
           // NOTE: Remember to divide by deg2rad(25) before you send the steering value back.
           // Otherwise the values will be in between [-deg2rad(25), deg2rad(25] instead of [-1, 1].
-          steer_value = optResult[0] / deg2rad(25);
+          steer_value = -optResult[0] / deg2rad(25);
           cout << "solve returned1" << endl;
           throttle_value = optResult[1];
           cout << "solve returned2" << endl;

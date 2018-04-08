@@ -3,28 +3,6 @@
 
 CMakeFiles/mpc.dir/src/MPC.cpp.o
  ../src/Eigen-3.3/Eigen/Core
- /Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include/coin/IpAlgTypes.hpp
- /Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include/coin/IpCachedResults.hpp
- /Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include/coin/IpDebug.hpp
- /Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include/coin/IpException.hpp
- /Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include/coin/IpIpoptApplication.hpp
- /Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include/coin/IpJournalist.hpp
- /Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include/coin/IpMatrix.hpp
- /Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include/coin/IpNLP.hpp
- /Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include/coin/IpObserver.hpp
- /Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include/coin/IpOptionsList.hpp
- /Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include/coin/IpReferenced.hpp
- /Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include/coin/IpRegOptions.hpp
- /Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include/coin/IpReturnCodes.hpp
- /Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include/coin/IpReturnCodes_inc.h
- /Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include/coin/IpSmartPtr.hpp
- /Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include/coin/IpSymMatrix.hpp
- /Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include/coin/IpTNLP.hpp
- /Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include/coin/IpTaggedObject.hpp
- /Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include/coin/IpTypes.hpp
- /Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include/coin/IpUtils.hpp
- /Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include/coin/IpVector.hpp
- /Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include/coin/IpoptConfig.h
  /Users/emresezginalp/carnd-term2/mpc_submission/src/Eigen-3.3/Eigen/Core
  /Users/emresezginalp/carnd-term2/mpc_submission/src/Eigen-3.3/Eigen/src/Core/Array.h
  /Users/emresezginalp/carnd-term2/mpc_submission/src/Eigen-3.3/Eigen/src/Core/ArrayBase.h
@@ -166,6 +144,28 @@ CMakeFiles/mpc.dir/src/MPC.cpp.o
  /Users/emresezginalp/carnd-term2/mpc_submission/src/Eigen-3.3/Eigen/src/plugins/MatrixCwiseUnaryOps.h
  /Users/emresezginalp/carnd-term2/mpc_submission/src/MPC.cpp
  /Users/emresezginalp/carnd-term2/mpc_submission/src/MPC.h
+ /usr/local/include/coin/IpAlgTypes.hpp
+ /usr/local/include/coin/IpCachedResults.hpp
+ /usr/local/include/coin/IpDebug.hpp
+ /usr/local/include/coin/IpException.hpp
+ /usr/local/include/coin/IpIpoptApplication.hpp
+ /usr/local/include/coin/IpJournalist.hpp
+ /usr/local/include/coin/IpMatrix.hpp
+ /usr/local/include/coin/IpNLP.hpp
+ /usr/local/include/coin/IpObserver.hpp
+ /usr/local/include/coin/IpOptionsList.hpp
+ /usr/local/include/coin/IpReferenced.hpp
+ /usr/local/include/coin/IpRegOptions.hpp
+ /usr/local/include/coin/IpReturnCodes.hpp
+ /usr/local/include/coin/IpReturnCodes_inc.h
+ /usr/local/include/coin/IpSmartPtr.hpp
+ /usr/local/include/coin/IpSymMatrix.hpp
+ /usr/local/include/coin/IpTNLP.hpp
+ /usr/local/include/coin/IpTaggedObject.hpp
+ /usr/local/include/coin/IpTypes.hpp
+ /usr/local/include/coin/IpUtils.hpp
+ /usr/local/include/coin/IpVector.hpp
+ /usr/local/include/coin/IpoptConfig.h
  /usr/local/include/cppad/base_require.hpp
  /usr/local/include/cppad/configure.hpp
  /usr/local/include/cppad/core/abort_recording.hpp

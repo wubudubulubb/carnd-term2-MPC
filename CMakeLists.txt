@@ -12,10 +12,7 @@ set(CMAKE_CXX_FLAGS "${CXX_FLAGS}")
 set(sources src/MPC.cpp src/main.cpp)
 
 include_directories(/usr/local/include)
-include_directories(/Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include)
 link_directories(/usr/local/lib)
-link_directories(/Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/lib)
-
 include_directories(src/Eigen-3.3)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")

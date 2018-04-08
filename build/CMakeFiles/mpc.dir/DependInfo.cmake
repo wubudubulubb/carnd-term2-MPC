@@ -12,7 +12,6 @@ set(CMAKE_CXX_COMPILER_ID "Clang")
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/local/include"
-  "/Users/emresezginalp/carnd-term2/ipopt_sandbox/Ipopt-3.12.7/include"
   "../src/Eigen-3.3"
   "/usr/local/opt/openssl/include"
   )
