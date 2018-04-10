@@ -143,6 +143,7 @@ CMakeFiles/mpc.dir/src/MPC.cpp.o: ../src/Eigen-3.3/Eigen/src/plugins/MatrixCwise
 CMakeFiles/mpc.dir/src/MPC.cpp.o: ../src/Eigen-3.3/Eigen/src/plugins/MatrixCwiseUnaryOps.h
 CMakeFiles/mpc.dir/src/MPC.cpp.o: ../src/MPC.cpp
 CMakeFiles/mpc.dir/src/MPC.cpp.o: ../src/MPC.h
+CMakeFiles/mpc.dir/src/MPC.cpp.o: ../src/matplotlibcpp.h
 CMakeFiles/mpc.dir/src/MPC.cpp.o: /usr/local/include/coin/IpAlgTypes.hpp
 CMakeFiles/mpc.dir/src/MPC.cpp.o: /usr/local/include/coin/IpCachedResults.hpp
 CMakeFiles/mpc.dir/src/MPC.cpp.o: /usr/local/include/coin/IpDebug.hpp

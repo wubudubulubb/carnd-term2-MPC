@@ -1125,6 +1125,8 @@ cppad/ipopt/solve.hpp
 -
 Eigen-3.3/Eigen/Core
 /Users/emresezginalp/carnd-term2/mpc_submission/src/Eigen-3.3/Eigen/Core
+matplotlibcpp.h
+/Users/emresezginalp/carnd-term2/mpc_submission/src/matplotlibcpp.h
 
 /Users/emresezginalp/carnd-term2/mpc_submission/src/MPC.h
 vector
@@ -1209,6 +1211,22 @@ MPC.h
 /Users/emresezginalp/carnd-term2/mpc_submission/src/MPC.h
 json.hpp
 /Users/emresezginalp/carnd-term2/mpc_submission/src/json.hpp
+
+/Users/emresezginalp/carnd-term2/mpc_submission/src/matplotlibcpp.h
+vector
+-
+map
+-
+numeric
+-
+stdexcept
+-
+iostream
+-
+functional
+-
+python2.7/Python.h
+-
 
 /usr/local/include/coin/IpAlgTypes.hpp
 IpTypes.hpp
