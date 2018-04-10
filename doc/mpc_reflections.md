@@ -28,10 +28,10 @@ __Iteration 3:__ Increasing the steering related penalties more, and also increa
 __Iteration 4:__ cte and epsi penalties multiplied by 10.
 | #iteration   | w_cte |  w_epsi | w_v | w_steer | w_acc | w_steerjump | w_accjump |
 |--------------|:-----:|--------:|----:|--------:|------:|------------:|----------:|
-| 1 		   |  1    | 1       | 1   |  0      |  0    |  0          |  0        |
-| 2 		   |  100  | 100     | 100 |  5       |  1    |  5        |  1      |
-| 3 		   |  100  | 500     | 100 |  10       |  1    |  10        |  1      |
-| 4 		   |  1000  | 5000     | 100 |  10       |  1    |  10        |  1      |
+| 1 		   |  1    | 1       | 1   |  0      |  0    |  0          |  0        :|
+| 2 		   |  100  | 100     | 100 |  5      |  1    |  5          |  1        :|
+| 3 		   |  100  | 500     | 100 |  10     |  1    |  10         |  1        :|
+| 4 		   |  1000 | 5000    | 100 |  10     |  1    |  10         |  1        :|
 
 At this point, it was found out that no matter what the scaling between the cte and epsi weights vs. the weights for "smoothing", the car was getting off track due to unstable response. This is due to the combination of high velocity and steering angle. For this, a new cost term which is the power of velocity times steering angle was introduced. Not so surprisingly, this resulted in stable response:
 
@@ -41,7 +41,8 @@ At this point, it was found out that no matter what the scaling between the cte 
 
 
 Below are the figures for iterations 5-.., plotted for first 600 simulation steps.
-[Figure 1 - response in iteration 5](figure_1.png)
+[!Figure 1 - response in iteration 5](figure_1.png)
+Figure 1 - response in iteration 5
 
 One can observe the on-off behaviour of throttle, and sudden jumps in control input delta. This can be solved by increasing w_steerjump and w_accjump and thus penalizing sudden jumps in controls:
 
@@ -49,7 +50,8 @@ One can observe the on-off behaviour of throttle, and sudden jumps in control in
 |--------------|:-----:|--------:|----:|--------:|------:|------------:|----------:|----------------:|
 | 6 		   |  1    | 1       | 1   |  0      |  0    |  1000         |  1         |   1			:|
 
-[Figure 2 - response in iteration 6](figure_2.png)
+![Figure 2 - response in iteration 6](figure_2.png)
+Figure 2 - response in iteration 6
 
 One can observe that the target waypoints are tracked with maximum cte of 20cm, after initial 60cm error. One can also observe that absolute value of heading error epsi is below 0.06rad = 3.4deg. The car completes the track with high speed and smooth driving.
 
@@ -57,7 +59,17 @@ One can observe that the target waypoints are tracked with maximum cte of 20cm, 
 
 Above tuning process was done by removing the latency from the simulator. When latency is introduced, the MPC is not able to cope, and the car is gone off-track at around 100th simulation step. The latency shall be taken into account to solve this issue.
 
-[Figure 3 - response due to latency](figure_3.png)
+![Figure 3 - response due to latency](figure_3.png)
+Figure 3 - response due to latency
 
 
 For dealing with the latency, model is run for 1 step with dt=0.1s, and the resulting state is used as the initial state for the optimization.
+However, after incorporating latency into the solution, the response was not as desired, and a similar tuning process described above was performed. The final values for the weights are chosen as:
+
+| #iteration   | w_cte |  w_epsi | w_v | w_steer | w_acc | w_steerjump | w_accjump | w_steer_times_v |
+|--------------|:-----:|--------:|----:|--------:|------:|------------:|----------:|----------------:|
+| FINAL 	   |  10    | 1000   | 1   |  10     |  5    |  1000       |  1        |   30			:|
+
+The car can finish the track without going out of road boundaries, and with a somewhat smooth ride. In the curves, cte increases, because the target speed is 100kmph, the car is having a sporty ride.
+
+One further point to investigate might be that the green line (predicted path from MPC) usually points out of the track, however since receding horizon is used and only first control inputs from the prediction are used, the control results in a smooth ride.

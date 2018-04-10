@@ -62,7 +62,7 @@ size_t a_start = delta_start + N - 1;
 
 // weights of costs. 
 double weight_cte = 10;
-double weight_epsi = 1;
+double weight_epsi = 1000;
 double weight_v = 1;
 double weight_steer = 10;
 double weight_acc = 5;
@@ -333,8 +333,11 @@ vector<double> MPC::Solve(Eigen::VectorXd state, Eigen::VectorXd coeffs) {
   // creates a 2 element double vector.
   std::vector<double> result = {solution.x[delta_start], solution.x[a_start],
             solution.x[x_start], solution.x[y_start],
+            solution.x[x_start + 1], solution.x[y_start + 1],
             solution.x[x_start + 2], solution.x[y_start + 2],
+            solution.x[x_start + 3], solution.x[y_start + 3],
             solution.x[x_start + 4], solution.x[y_start + 4],
+            solution.x[x_start + 5], solution.x[y_start + 5],
             solution.x[x_start + 6], solution.x[y_start + 6]};
 
 
