@@ -17,6 +17,8 @@ constexpr double pi() { return M_PI; }
 double deg2rad(double x) { return x * pi() / 180; }
 double rad2deg(double x) { return x * 180 / pi(); }
 
+//convert from mph to meters_per_sec:
+double mph2mps(double x) {return x * 1.60934 / 3.6; }
 // Checks if the SocketIO event has JSON data.
 // If there is data the JSON object in string format will be returned,
 // else the empty string "" will be returned.
@@ -92,6 +94,9 @@ int main() {
           double psi = j[1]["psi"];
           double v = j[1]["speed"];
 
+          // convert to meters per sec:
+          v = mph2mps(v);
+
           // ptsx and ptsy should have the same size!!  
           assert(ptsx.size() == ptsy.size());
 
@@ -110,8 +115,8 @@ int main() {
           Eigen::Map<Eigen::VectorXd> x_transform(ptr_x, 6);
           Eigen::Map<Eigen::VectorXd> y_transform(ptr_y, 6);
 
-          cout << "LOG : x_transform : " << x_transform << endl;
-          cout << "LOG : y_transform : " << y_transform << endl;
+          //cout << "LOG : x_transform : " << x_transform << endl;
+          //cout << "LOG : y_transform : " << y_transform << endl;
 
           auto coeffs = polyfit(x_transform, y_transform, 3); //fit 3rd degree polynomial
 
@@ -129,28 +134,38 @@ int main() {
           * Both are in between [-1, 1].
           *
           */
+          double Lf = 2.67; 
           double steer_value = j[1]["steering_angle"];
           double throttle_value = j[1]["throttle"];
-
+          double latency = 0.1;
+          // creating state in next time step, in order to cope with latency:
+          v = v + throttle_value * latency; // v is updated already, 
+          double predicted_psi = 0 + v * (-steer_value) * deg2rad(25) / Lf * latency;
+          double predicted_x = 0 + v * cos(predicted_psi) * latency; // psi=0, because we already rotated to car coordinates
+          double predicted_y = 0 + v * sin(predicted_psi) * 0.1; 
+                   
+          
+          cte = cte + + (v * sin(epsi) * latency);
+          epsi = epsi + v * (-steer_value) * deg2rad(25) / Lf * latency;
           // filling state vector. Because of the coordinate transformation, x,y,psi = 0
           Eigen::VectorXd state(6);
-          state << 0, 0, 0, v, cte, epsi;
+          state << predicted_x, predicted_y, predicted_psi, v, cte, epsi;
 
-          cout << "calling Solve" << endl;
+         //cout << "calling Solve" << endl;
           // solve the optimization problem
           auto optResult = mpc.Solve(state, coeffs); 
 
-          cout << "solve returned" << endl;
+          //cout << "solve returned" << endl;
           json msgJson;
           // NOTE: Remember to divide by deg2rad(25) before you send the steering value back.
           // Otherwise the values will be in between [-deg2rad(25), deg2rad(25] instead of [-1, 1].
           steer_value = -optResult[0] / deg2rad(25);
-          cout << "solve returned1" << endl;
+          //cout << "solve returned1" << endl;
           throttle_value = optResult[1];
-          cout << "solve returned2" << endl;
+          //cout << "solve returned2" << endl;
           msgJson["steering_angle"] = steer_value;
           msgJson["throttle"] = throttle_value;
-          cout << "solve returned3" << endl;
+          //cout << "solve returned3" << endl;
           //Display the MPC predicted trajectory 
           vector<double> mpc_x_vals;
           vector<double> mpc_y_vals;
@@ -158,10 +173,10 @@ int main() {
           // again, code from Q&A video:
           for(int i=2; i<optResult.size(); i++){
             if(i % 2 == 0){
-              mpc_x_vals.push_back(optResult[i]);
+              mpc_x_vals.push_back(optResult[i] * 3.6 / 0.62);
             }
             else{
-              mpc_y_vals.push_back(optResult[i]);
+              mpc_y_vals.push_back(optResult[i] *3.6 / 0.62 );
             }
           }
           
